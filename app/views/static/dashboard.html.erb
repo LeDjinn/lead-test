@@ -1,0 +1,54 @@
+<%# <%= javascript_tag do %>
+  <%# var tokkens = <%= raw(get_facebook.to_json) %>
+<% #end %> 
+<%= javascript_pack_tag 'hello_react' %>
+
+        <!--Navbar-->
+        <div class='Navbar h-20 w-full justify-between flex  font-bold bg-black'>
+            <div class="text-white text-2xl  ml-4 mt-6 font-bold">
+               LeadCollector
+            </div>
+            <div class=" flex justify-between ">
+            <a href=# class=' mt-8 mr-4 text-white'>Home</a>
+            <a href=# class=' mt-8 mr-4 text-white'>Produit</a>
+            <a href=# class='mr-4 mt-8 text-white'>Dashboard</a>
+            <a href=# class=' mr-4 mt-8 text-white'>Contact</a>
+           </div>
+        </div>
+ 
+      
+
+
+       <h1>Contentwebs</h1>
+         <%@contentwebs.each do |contentweb|%>
+         <ul>
+         <li><%= contentweb.header%></li>
+
+         
+         </ul>
+         <%end%>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            <% @contentwebs.each do |contentweb| %>
+              <tr>
+                <td><%= link_to 'Show', contentweb %></td>
+                <td><%= link_to 'Edit', edit_contentweb_path(contentweb) %></td>
+                <td><%= link_to 'Destroy', contentweb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+        <br>
+        
+        <%= link_to 'New Contentweb', new_contentweb_path %>
+        
+        
+   
+</div>
