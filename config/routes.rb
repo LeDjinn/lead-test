@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   post "/graphql", to: "graphql#execute"
  
-  resources :answers
+  resources :answers , except: [:update, :edit]
+  put '/answers/', to: 'answers#update'
   resources :comments
   resources :contentwebs do
     resources :pages 

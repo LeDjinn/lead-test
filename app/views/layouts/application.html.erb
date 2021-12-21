@@ -17,6 +17,28 @@
   </head>
    
  <body>
+  <div class='Navbar h-20 w-full justify-between flex  font-bold bg-black'>
+    <div class="text-white text-2xl  ml-4 mt-6 font-bold">
+       LeadCollector
+    </div>
+    <% if current_user %>
+      <%= button_to "logout", destroy_user_session_path, method: :delete, class: "text-center text-3xl text-red-900 font-bold "  %>
+    <%else%>
+       <%= link_to "login", new_user_session_path , class: "text-center text-3xl text-yellow-800" %>
+    <%end%>
+    
+    <div class=" flex justify-between ">
+    <a href="/" class=' mt-8 mr-4 text-white'>Home</a>
+    <a href="/about" class=' mr-4 mt-8 text-white'>Qui sommes nous ?</a>
+    <a href="/product" class=' mt-8 mr-4 text-white'>Produit</a>
+    <a href="/dashboard" class='mr-4 mt-8 text-white'>Dashboard</a>
+    <a href="/contact" class=' mr-4 mt-8 text-white'>Contact</a>
+    <a href="/index" class='mr-4 mt-8 text-white'>Admin</a>
+   </div>
+</div>
+
+
+ </nav>
 
     <%= yield %>
   </body>

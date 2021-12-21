@@ -2,7 +2,7 @@ class StaticController < ApplicationController
   before_action :set_contentweb, only: %i[ show edit update destroy ]
   before_action :set_paid_user
   # Stripe.api_key=Rails.application.credentials.stripe[:secret_key]
-  before_action :authenticate_user! 
+  before_action :authenticate_user! ,except: [:contact, :product]
 
   def contact
   end
@@ -11,7 +11,7 @@ class StaticController < ApplicationController
   end
 
   def dashboard
-    @users = User.all
+    
     client = current_user
     @contentwebs = Contentweb.where(user: client)
     @comments = Comment.where(user: client)

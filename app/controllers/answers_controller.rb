@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: %i[ show edit update destroy ]
+  before_action :set_answer, only: %i[ show  destroy ]
 
   # GET /answers or /answers.json
   def index
@@ -21,14 +21,14 @@ class AnswersController < ApplicationController
 
   # POST /answers or /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @answer = Answer.new(user_id: params[:user_id].to_i, comment_id: params[:comment_id].to_i, body: params[:body])
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: "Answer was successfully created." }
+        format.html { redirect_to index_path, notice: "Answer was successfully created." }
         format.json { render :show, status: :created, location: @answer }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to index_path, status: :unprocessable_entity }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end

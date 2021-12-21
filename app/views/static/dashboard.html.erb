@@ -1,21 +1,12 @@
 <%# <%= javascript_tag do %>
   <%# var tokkens = <%= raw(get_facebook.to_json) %>
 <% #end %> 
+
+<h3 class="text-center text-green-500 text-2xl font-bold">Rafraichissez la page si le Dashboard n'apparait pas !</h3>
 <%= javascript_pack_tag 'hello_react' %>
 
         <!--Navbar-->
-        <div class='Navbar h-20 w-full justify-between flex  font-bold bg-black'>
-            <div class="text-white text-2xl  ml-4 mt-6 font-bold">
-               LeadCollector
-            </div>
-            <div class=" flex justify-between ">
-            <a href=# class=' mt-8 mr-4 text-white'>Home</a>
-            <a href=# class=' mt-8 mr-4 text-white'>Produit</a>
-            <a href=# class='mr-4 mt-8 text-white'>Dashboard</a>
-            <a href=# class=' mr-4 mt-8 text-white'>Contact</a>
-           </div>
-        </div>
- 
+        
       
 
 
@@ -36,18 +27,24 @@
         
           <tbody>
             <% @contentwebs.each do |contentweb| %>
-              <tr>
-                <td><%= link_to 'Show', contentweb %></td>
-                <td><%= link_to 'Edit', edit_contentweb_path(contentweb) %></td>
-                <td><%= link_to 'Destroy', contentweb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
+                <ul>
+                <li class="text-2xl text-green-500 font-bold"><%= link_to 'Voir la prevue', contentweb %></li><br>
+                <li class="text-2xl text-green-500 font-bold"><%= link_to 'Modifier', edit_contentweb_path(contentweb) %></li><br>
+                <li class="text-2xl text-red-500 font-bold"><%= link_to 'Effacez le contenuu', contentweb, method: :delete, data: { confirm: 'Are you sure?' } %></li><br>
+               <li class=""><%= link_to 'Créez Votre de nouvelles pages WEB', contentweb_pages_path(contentweb), class: 'text-5xl font-bold text-green-900' %></li><br>
+              </ul>
+            
             <% end %>
           </tbody>
         </table>
         
         <br>
+        <%if current_user.contentweb.nil?%>
+            <%= link_to 'Créez Votre première page WEB', new_contentweb_path, class: 'text-5xl font-bold text-green-900' %>
         
-        <%= link_to 'New Contentweb', new_contentweb_path %>
+        <%end%>
+
+    
         
         
    

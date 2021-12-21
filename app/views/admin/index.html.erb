@@ -31,9 +31,24 @@
   <li @click="open = true" class="cursor-pointer" ><%=user.email%> </li>
    <button @click ="open=false " class="bg-red-900 text-3xl text-white text-center font-bold cursor-pointer">X</button>
       <%user.comments.each do |comment|%>
-        <ul  x-show="open" class="bg-gray-100 text-lg"  >
-            <li><%=comment.body%></li>
-        </ul>
+        <div  x-show="open" class="bg-gray-100 text-lg"  >
+            <div><%=comment.body%></div>
+            <div><%=comment.id%></div>
+            <div><%comment.answers.each do |answer| %>
+                     <div><%=answer.body%></div>
+                   
+                  </div>
+            <%end%>
+            <div class="bg-red-900 w-full h-96">
+            <%=form_with( url: answers_path, method: :post) do |form|%>
+               <%=form.text_area :body, class: "bg-gray-100 text-lg" %>
+               <%= form.hidden_field :comment_id, value: comment.id%>
+               <%= form.hidden_field :user_id , value: 1%>
+               <%=form.submit "Répondre", class: "bg-green-500 text-lg" %>
+            <%end%>
+            </div>
+
+        </div>
    <%end%>
   
   </ul>
