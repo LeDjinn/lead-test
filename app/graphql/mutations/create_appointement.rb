@@ -1,13 +1,13 @@
 module Mutations
   class CreateAppointement < BaseMutation
     # TODO: define return fields
-     field :appointement, Types::AppointementType, null: false
+    field :appointement, Types::AppointementType, null: false
 
     # TODO: define arguments
-     argument :motif, String, required: true
-     argument :date, GraphQL::Types::ISO8601DateTime, required: true
+    argument :motif, String, required: true
+    argument :date, GraphQL::Types::ISO8601DateTime, required: true
 
-     type Types::AppointementType
+    type Types::AppointementType
 
     # TODO: define resolve method
     # def resolve(name:)
@@ -16,15 +16,9 @@ module Mutations
       user = current_user
       appointement = user.appointements.build(motif: motif, date: date)
       if appointement.save
-        {
-          appointement: appointement,
-          errors: []
-        }
+        { appointement: appointement, errors: [] }
       else
-        {
-          appointement: nil,
-          errors: appointement.errors.full_messages
-        }
+        { appointement: nil, errors: appointement.errors.full_messages }
       end
     end
   end

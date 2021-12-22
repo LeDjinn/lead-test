@@ -1,1 +1,1 @@
-json.array! @contentwebs, partial: "contentwebs/contentweb", as: :contentweb
+json.array! @contentwebs, partial: 'contentwebs/contentweb', as: :contentweb

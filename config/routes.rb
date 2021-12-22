@@ -1,31 +1,28 @@
 Rails.application.routes.draw do
- 
- 
   resources :tokkens
   if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
-  post "/graphql", to: "graphql#execute"
- 
-  resources :answers , except: [:update, :edit]
+  post '/graphql', to: 'graphql#execute'
+
+  resources :answers, except: %i[update edit]
   put '/answers/', to: 'answers#update'
   resources :comments
   resources :contentwebs do
-    resources :pages 
+    resources :pages
   end
-  devise_for :users 
+  devise_for :users
   resources :words
-  
 
   resources :tokkens
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to:'home#index'
+  root to: 'home#index'
 
-  resources :webhooks, only:[:create]
+  resources :webhooks, only: [:create]
 
   scope controller: :home do
-    
     get :about
   end
   scope controller: :static do
@@ -35,8 +32,8 @@ Rails.application.routes.draw do
     get :dashboard
     get :admin_dashboard
   end
-   scope controller: :admin do
+  scope controller: :admin do
     get :index
-   end
-   resources :notifications
+  end
+  resources :notifications
 end

@@ -1,1 +1,1 @@
-json.partial! "contentwebs/contentweb", contentweb: @contentweb
+json.partial! 'contentwebs/contentweb', contentweb: @contentweb

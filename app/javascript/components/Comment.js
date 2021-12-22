@@ -1,12 +1,10 @@
-import React from 'react'
-import Hello from './Hello';
-import {useQuery} from '@apollo/client'
-import  AddAnswer  from './AddAnswer';
-import {COMMENTS} from '../queries/allQueries'
+import React from "react";
+import Hello from "./Hello";
+import { useQuery } from "@apollo/client";
+import AddAnswer from "./AddAnswer";
+import { COMMENTS } from "../queries/allQueries";
 
-
-
-function Comment(comId){
+function Comment(comId) {
   const { loading, error, data } = useQuery(COMMENTS);
 
   if (loading) return <p>Loading...</p>;
@@ -17,17 +15,17 @@ function Comment(comId){
       <p className="text-3xl ">
         {comment.body}
         {comment.userId}
-      <AddAnswer comId={comment.id}/>
+        <AddAnswer comId={comment.id} />
       </p>
-        {comment.answers.map((answer)=>
+      {comment.answers.map((answer) => (
         <>
-        <div className='bg-pink-200 text-xl rounded-md w-1/2' key={answer.id}>{answer.body}</div>
-        
-        </>)
-        }
-    
+          <div className="bg-pink-200 text-xl rounded-md w-1/2" key={answer.id}>
+            {answer.body}
+          </div>
+        </>
+      ))}
     </div>
   ));
 }
 
-export default Comment
+export default Comment;

@@ -1,1 +1,1 @@
-json.partial! "tokkens/tokken", tokken: @tokken
+json.partial! 'tokkens/tokken', tokken: @tokken

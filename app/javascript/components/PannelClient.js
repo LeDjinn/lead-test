@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Communication from './Communication';
-import FacebbokAdd from './FacebbokAdd';
-import GoogleAdd from './GoogleAdd';
+import React, { useState } from "react";
+import Communication from "./Communication";
+import FacebbokAdd from "./FacebbokAdd";
+import GoogleAdd from "./GoogleAdd";
 
 export default function PannelClient() {
   const [target, setTarget] = useState(1);
@@ -10,7 +10,7 @@ export default function PannelClient() {
   const openFace = () => setTarget(2);
   const openGoogle = () => setTarget(3);
 
-  let component = '';
+  let component = "";
   if (target === 1) {
     component = <Communication />;
   }

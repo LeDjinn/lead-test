@@ -18,11 +18,5 @@ class AddFieldToPages < ActiveRecord::Migration[6.1]
     add_column :pages, :text4, :text
     add_column :pages, :text5, :text
     add_column :pages, :text6, :text
-    
-
-
-   
-  
-  
   end
 end

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { AddAppointement } from './AddAppointement';
-import { AddFacebookemodif } from './AddFacebookmodif';
-import { AddGooglemodif } from './AddGooglemodif';
-import { AddWebmodif } from './AddWebmodif';
+import React, { useState } from "react";
+import { AddAppointement } from "./AddAppointement";
+import { AddFacebookemodif } from "./AddFacebookmodif";
+import { AddGooglemodif } from "./AddGooglemodif";
+import { AddWebmodif } from "./AddWebmodif";
 
 export default function Action() {
   const [showgoogle, setShowgoogle] = useState(true);
@@ -45,7 +45,7 @@ export default function Action() {
             </div>
             <div
               className={`fixed ${
-                showweb ? 'hidden' : ''
+                showweb ? "hidden" : ""
               } inset-0 h-screen w-full bg-opacity-75 bg-gray-900 p-48`}
             >
               <div className="bg-blue-700 h-96 w-96 p-12 ">
@@ -77,7 +77,7 @@ export default function Action() {
             </div>
             <div
               className={`fixed ${
-                showfacebook ? 'hidden' : ''
+                showfacebook ? "hidden" : ""
               } inset-0 h-screen w-full bg-opacity-75 bg-blue-500 p-48`}
             >
               <div className="bg-blue-700 h-96 w-96 p-12 ">
@@ -109,7 +109,7 @@ export default function Action() {
             </div>
             <div
               className={`fixed ${
-                showgoogle ? 'hidden' : ''
+                showgoogle ? "hidden" : ""
               } inset-0 h-screen w-full bg-opacity-75 bg-green-900 p-48`}
             >
               <div className="bg-blue-700 h-96 w-96 p-12 ">
@@ -157,7 +157,7 @@ export default function Action() {
             </div>
             <div
               className={`fixed ${
-                rdv ? 'hidden' : ''
+                rdv ? "hidden" : ""
               } inset-0 h-screen w-full bg-opacity-75 bg-green-900 p-48`}
             >
               <div className="bg-blue-700 h-96 w-96 p-12 ">

@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: %i[ show  destroy ]
+  before_action :set_answer, only: %i[show destroy]
 
   # GET /answers or /answers.json
   def index
@@ -7,8 +7,7 @@ class AnswersController < ApplicationController
   end
 
   # GET /answers/1 or /answers/1.json
-  def show
-  end
+  def show; end
 
   # GET /answers/new
   def new
@@ -16,20 +15,28 @@ class AnswersController < ApplicationController
   end
 
   # GET /answers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /answers or /answers.json
   def create
-    @answer = Answer.new(user_id: params[:user_id].to_i, comment_id: params[:comment_id].to_i, body: params[:body])
+    @answer =
+      Answer.new(
+        user_id: params[:user_id].to_i,
+        comment_id: params[:comment_id].to_i,
+        body: params[:body]
+      )
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to index_path, notice: "Answer was successfully created." }
+        format.html do
+          redirect_to index_path, notice: 'Answer was successfully created.'
+        end
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { redirect_to index_path, status: :unprocessable_entity }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @answer.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -38,11 +45,15 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: "Answer was successfully updated." }
+        format.html do
+          redirect_to @answer, notice: 'Answer was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @answer.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -51,19 +62,22 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: "Answer was successfully destroyed." }
+      format.html do
+        redirect_to answers_url, notice: 'Answer was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_answer
-      @answer = Answer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def answer_params
-      params.fetch(:answer, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_answer
+    @answer = Answer.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def answer_params
+    params.fetch(:answer, {})
+  end
 end

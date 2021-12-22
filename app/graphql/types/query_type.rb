@@ -5,8 +5,6 @@ module Types
     field :googlemodifs, [Types::GooglemodifType], null: false
     field :webmodifs, [Types::WebmodifType], null: false
 
-   
-   
     def comments
       Comment.where(user: current_user)
     end
@@ -22,6 +20,5 @@ module Types
     def webmodifs
       Webmodif.where(user: current_user)
     end
-    
   end
 end

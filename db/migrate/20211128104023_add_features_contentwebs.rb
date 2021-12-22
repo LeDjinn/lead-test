@@ -24,8 +24,5 @@ class AddFeaturesContentwebs < ActiveRecord::Migration[6.1]
     add_column :contentwebs, :sub_header5, :string
     add_column :contentwebs, :sub_header6, :string
     add_column :contentwebs, :content6, :text
-
-
-    
   end
 end

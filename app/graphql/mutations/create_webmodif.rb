@@ -3,12 +3,11 @@ module Mutations
     field :webmodif, Types::WebmodifType, null: false
 
     # TODO: define arguments
-     argument :change1, String, required: true
-     argument :change2, String, required: false
-     argument :change3, String, required: false
-    
+    argument :change1, String, required: true
+    argument :change2, String, required: false
+    argument :change3, String, required: false
 
-     type Types::WebmodifType
+    type Types::WebmodifType
 
     # TODO: define resolve method
     # def resolve(name:)
@@ -16,17 +15,16 @@ module Mutations
     # end
     def resolve(change1:, change2:, change3:)
       user = current_user
-      webmodif = user.webmodifs.build(change1: change1, change2: change2, change3: change3)
+      webmodif =
+        user.webmodifs.build(
+          change1: change1,
+          change2: change2,
+          change3: change3
+        )
       if webmodif.save
-        {
-          webmodif: webmodif,
-          errors: []
-        }
+        { webmodif: webmodif, errors: [] }
       else
-        {
-          comment: nil,
-          errors: webmodif.errors.full_messages
-        }
+        { comment: nil, errors: webmodif.errors.full_messages }
       end
     end
   end

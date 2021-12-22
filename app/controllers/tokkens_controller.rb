@@ -1,5 +1,5 @@
 class TokkensController < ApplicationController
-  before_action :set_tokken, only: %i[ show edit update destroy ]
+  before_action :set_tokken, only: %i[show edit update destroy]
 
   # GET /tokkens or /tokkens.json
   def index
@@ -7,8 +7,7 @@ class TokkensController < ApplicationController
   end
 
   # GET /tokkens/1 or /tokkens/1.json
-  def show
-  end
+  def show; end
 
   # GET /tokkens/new
   def new
@@ -16,8 +15,7 @@ class TokkensController < ApplicationController
   end
 
   # GET /tokkens/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /tokkens or /tokkens.json
   def create
@@ -25,11 +23,15 @@ class TokkensController < ApplicationController
 
     respond_to do |format|
       if @tokken.save
-        format.html { redirect_to @tokken, notice: "Tokken was successfully created." }
+        format.html do
+          redirect_to @tokken, notice: 'Tokken was successfully created.'
+        end
         format.json { render :show, status: :created, location: @tokken }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tokken.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @tokken.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -38,11 +40,15 @@ class TokkensController < ApplicationController
   def update
     respond_to do |format|
       if @tokken.update(tokken_params)
-        format.html { redirect_to @tokken, notice: "Tokken was successfully updated." }
+        format.html do
+          redirect_to @tokken, notice: 'Tokken was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @tokken }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tokken.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @tokken.errors, status: :unprocessable_entity
+        end
       end
     end
   end
@@ -51,19 +57,22 @@ class TokkensController < ApplicationController
   def destroy
     @tokken.destroy
     respond_to do |format|
-      format.html { redirect_to tokkens_url, notice: "Tokken was successfully destroyed." }
+      format.html do
+        redirect_to tokkens_url, notice: 'Tokken was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tokken
-      @tokken = Tokken.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tokken_params
-      params.require(:tokken).permit(:fbTokken, :gTokken, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tokken
+    @tokken = Tokken.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def tokken_params
+    params.require(:tokken).permit(:fbTokken, :gTokken, :user_id)
+  end
 end

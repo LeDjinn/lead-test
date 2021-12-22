@@ -1,13 +1,7 @@
-import React from 'react';
-import Action from './Action';
-
-
-
+import React from "react";
+import Action from "./Action";
 
 const AsideBar = (likes) => (
-
-  
-
   <aside className="z-20 flex-shrink-0 hidden w-76 pl-2 overflow-y-auto bg-gray-800 md:block">
     <div class="text-white">
       <div class="flex p-2  bg-gray-800">
@@ -76,11 +70,9 @@ const AsideBar = (likes) => (
 
             <span class="ml-4">
               Nouveaux like
-              
               <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-purple-500 text-white">
-                {likes.likes ? likes.likes : 'No Tokken'}
+                {likes.likes ? likes.likes : "No Tokken"}
               </div>
-              
             </span>
           </a>
         </li>
@@ -138,7 +130,7 @@ const AsideBar = (likes) => (
             </span>
           </a>
         </li>
-        <Action/>
+        <Action />
       </ul>
     </div>
   </aside>

@@ -1,5 +1,5 @@
 module HomeindexHelper
-    def check_user_paid
-       true
-    end
+  def check_user_paid
+    true
+  end
 end

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useMutation } from '@apollo/client';
+import React from "react";
+import { useMutation } from "@apollo/client";
 
-import { ADD_WEBMODIF } from '../queries/allQueries';
+import { ADD_WEBMODIF } from "../queries/allQueries";
 
 export const AddWebmodif = () => {
   const [addWebmodif, { data }] = useMutation(ADD_WEBMODIF);
@@ -17,7 +17,7 @@ export const AddWebmodif = () => {
         change2: change2.value,
         change3: change3.value,
       },
-    }).then((change1.value = ''), (change2.value = ''), (change3.value = ''));
+    }).then((change1.value = ""), (change2.value = ""), (change3.value = ""));
     //window.location.reload();
   };
 

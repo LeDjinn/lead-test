@@ -1,7 +1,7 @@
-import React from 'react';
-import { useMutation } from '@apollo/client';
+import React from "react";
+import { useMutation } from "@apollo/client";
 
-import { ADD_COMMENT, COMMENTS } from '../queries/allQueries';
+import { ADD_COMMENT, COMMENTS } from "../queries/allQueries";
 
 export const AddComment = () => {
   const [addComment, { data }] = useMutation(ADD_COMMENT);
@@ -14,7 +14,7 @@ export const AddComment = () => {
     addComment({
       variables: { body: body.value },
       refetchQueries: [{ query: COMMENTS }],
-    }).then((body.value = ''));
+    }).then((body.value = ""));
     //window.location.reload();
   };
 
