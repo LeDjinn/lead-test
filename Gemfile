@@ -77,3 +77,4 @@ gem 'receipts', '~> 1.1'
 gem 'faraday'
 gem 'rack-cors'
 gem 'prettier'
+gem 'rubocop', require: false
