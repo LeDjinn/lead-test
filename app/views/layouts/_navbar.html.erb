@@ -1,4 +1,4 @@
-<div class='bg-blue-600'>
+<div class='primary'>
  <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
    <div class="relative flex items-center justify-between">
      <a
@@ -18,54 +18,52 @@
        <li>
          <a
            href="/"
-           aria-label="Our product"
-           title="Our product"
-           class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+           aria-label="Accueil"
+           title="Accueil"
+           class="font-medium tracking-wide text-base text-gray-50 transition-colors duration-200 hover:text-gray-900"
          >
-           Product
+           Accueil
          </a>
        </li>
        <li>
          <a
-           href="/"
-           aria-label="Our product"
-           title="Our product"
-           class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+           href="/about"
+           aria-label="About Lead Collector"
+           title="About Lead Collector"
+           class="font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:text-gray-900"
          >
-           Features
+           À propos
          </a>
        </li>
        <li>
          <a
-           href="/"
-           aria-label="Product pricing"
-           title="Product pricing"
-           class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+           href="/product"
+           aria-label="Products pricing"
+           title="Products pricing"
+           class="font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:text-gray-900"
          >
-           Pricing
+           Nos produits
          </a>
        </li>
        <li>
          <a
-           href="/"
-           aria-label="About us"
-           title="About us"
-           class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+           href="/dashboard"
+           aria-label="Tableau de board"
+           title="Tableau de board"
+           class="font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:text-gray-900"
          >
-           About us
+         Tableau de board
          </a>
        </li>
      </ul>
      <ul class="flex items-center hidden space-x-8 lg:flex">
        <li>
-         <a
-           href="/"
-           class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none"
-           aria-label="Sign up"
-           title="Sign up"
-         >
-           Sign up
-         </a>
+         
+         <% if current_user %>
+            <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none "  %>
+        <%else%>
+            <%= link_to "S'abonner", new_user_session_path , class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none" %>
+        <%end%>
        </li>
      </ul>
      <div x-data="{ showMenu: false }" class="lg:hidden z-10">
@@ -139,56 +137,53 @@
                </div>
              </div>
              <nav>
-               <ul class="space-y-4">
+               <ul class="space-y-4 flex flex-col items-center justify-center">
                  <li>
                    <a
                      href="/"
-                     aria-label="Our product"
-                     title="Our product"
-                     class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+                     aria-label="Accueil"
+                     title="Accueil"
+                     class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
                    >
-                     Product
+                     Accueil
                    </a>
                  </li>
                  <li>
                    <a
-                     href="/"
-                     aria-label="Our product"
-                     title="Our product"
-                     class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+                     href="/about"
+                     aria-label="À propos de Lead Collector"
+                     title="À propos de Lead Collector"
+                     class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
                    >
-                     Features
+                    À propos
                    </a>
                  </li>
                  <li>
                    <a
-                     href="/"
+                     href="/products"
                      aria-label="Product pricing"
                      title="Product pricing"
-                     class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+                     class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
                    >
-                     Pricing
+                     Nos produits
                    </a>
                  </li>
                  <li>
                    <a
-                     href="/"
-                     aria-label="About us"
-                     title="About us"
-                     class="font-medium tracking-wide text-gray-50 transition-colors duration-200 hover:text-pink-600"
+                     href="/dashboard"
+                     aria-label="Tableau de board"
+                     title="Tableau de board"
+                     class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
                    >
-                     About us
+                     Tableau de board
                    </a>
                  </li>
                  <li>
-                   <a
-                     href="/"
-                     class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                     aria-label="Sign up"
-                     title="Sign up"
-                   >
-                     Sign up
-                   </a>
+                   <% if current_user %>
+                    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"  %>
+                   <%else%>
+                   <%= link_to "S'abonner", new_user_session_path , class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" %>
+                  <%end%>
                  </li>
                </ul>
              </nav>
