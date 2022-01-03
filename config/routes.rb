@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   resources :contentwebs do
     resources :pages
   end
-  devise_for :users
-  resources :words
+  devise_for :users, :path => 'accounts'
+  resources :users do
+       resources :words
+  end
 
   resources :tokkens
 
