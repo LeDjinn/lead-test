@@ -8,11 +8,11 @@ class StaticController < ApplicationController
   def contact; end
 
   def admin_dashboard
-     if params[:secret_number] == 'secret'
-      sign(true)
-     else
-      sign(false)
-     end
+        #if params[:secret_number] == 'secret'
+     # sign(true)
+        #else
+        # sign(false)
+       # end
     
   end
 
