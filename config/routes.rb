@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get :about
   end
   scope controller: :static do
+    get :blog
     get :help
     
     get :product

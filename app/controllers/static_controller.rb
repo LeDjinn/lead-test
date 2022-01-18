@@ -8,11 +8,13 @@ class StaticController < ApplicationController
   def contact; end
 
   def admin_dashboard
-        #if params[:secret_number] == 'secret'
-     # sign(true)
-        #else
-        # sign(false)
-       # end
+
+       if params[:secret_number] == 'secret'
+         sign(true)
+        else
+        sign(false)
+       end
+
     
   end
 
@@ -25,10 +27,16 @@ class StaticController < ApplicationController
     @comments = Comment.where(user: client)
   end
 
+
+  def blog
+    @blogs = Word.where(user_id: 2)
+  end 
+
   def create
     @user=current_user
     @user.update(avatar: params[:avatar])
   end
+
 
   private
 
