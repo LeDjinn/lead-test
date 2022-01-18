@@ -6,8 +6,11 @@ class AdminController < ApplicationController
     @notifications_valid = Notification.where(read: false)
     @answer = Answer.new
     @words = Word.all
-    @word= Word.find(params[:word_id])
-    @user = User.find(params[:user_id])
+    if params[:word_id]
+      @word= Word.find(params[:word_id])
+      @user = User.find(params[:user_id])
+    end
+  
   end
 
 

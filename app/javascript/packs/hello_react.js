@@ -28,12 +28,14 @@ const client = new ApolloClient({
 });
 const data = window.tokkens;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('turbolinks:load', () => {
+  let element = document.getElementById("testReact");
   ReactDOM.render(
+  
     <ApolloProvider client={client}>
       <App tokkens={data} />,
     </ApolloProvider>,
-
-    document.body.appendChild(document.createElement("div"))
+     element
+    //document.body.appendChild(document.createElement("div"))
   );
 });

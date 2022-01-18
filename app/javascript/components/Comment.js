@@ -14,7 +14,7 @@ function Comment(comId) {
     <div key={comment.id}>
       <p className="text-3xl ">
         {comment.body}
-        {comment.userId}
+       
         <AddAnswer comId={comment.id} />
       </p>
       {comment.answers.map((answer) => (

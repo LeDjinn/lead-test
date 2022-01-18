@@ -171,14 +171,11 @@
                    </a>
                  </li>
                  <li>
-                   <a
-                     href="/dashboard"
-                     aria-label="Tableau de board"
-                     title="Tableau de board"
-                     class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
-                   >
-                     Tableau de board
-                   </a>
+                   <%= link_to 'Tableau de Board', dashboard_path,  class: 'font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600' %>
+                    
+                     
+                   
+                 
                  </li>
                  <li>
                    <% if current_user %>
