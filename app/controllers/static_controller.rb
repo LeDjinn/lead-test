@@ -20,8 +20,14 @@ class StaticController < ApplicationController
 
   def dashboard
     client = current_user
+    @user = current_user
     @contentwebs = Contentweb.where(user: client)
     @comments = Comment.where(user: client)
+  end
+
+  def create
+    @user=current_user
+    @user.update(avatar: params[:avatar])
   end
 
   private

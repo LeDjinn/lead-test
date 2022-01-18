@@ -29,13 +29,17 @@ Rails.application.routes.draw do
   end
   scope controller: :static do
     get :help
-    get :contact
+    
     get :product
     get :dashboard
+    post :create
     get :admin_dashboard
   end
   scope controller: :admin do
     get :index
   end
   resources :notifications
+  
+  resources :contacts
+  
 end
