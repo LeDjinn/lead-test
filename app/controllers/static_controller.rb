@@ -24,6 +24,11 @@ class StaticController < ApplicationController
     @comments = Comment.where(user: client)
   end
 
+  def blog
+    @blogs = Word.where(user_id: 2)
+  
+  end 
+
   private
 
   def set_paid_user
