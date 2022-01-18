@@ -30,13 +30,17 @@ Rails.application.routes.draw do
   scope controller: :static do
     get :blog
     get :help
-    get :contact
+    
     get :product
     get :dashboard
+    post :create
     get :admin_dashboard
   end
   scope controller: :admin do
     get :index
   end
   resources :notifications
+  
+  resources :contacts
+  
 end

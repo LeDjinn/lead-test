@@ -1,0 +1,32 @@
+<div>
+<h1>Page ou on a tout les indexs</h1>
+
+ <h2> Tout les contact dans chaque ville </h2>
+
+  <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @contacts.each do |contact| %>
+      <tr>  
+        <td><%= contact.place %></td>
+       
+        >
+        <td><%= link_to 'Show', contact_path(contact) %></td>
+        <td><%= link_to 'Edit', edit_contact_path( contact ) %></td>
+        <td><%= link_to 'Destroy', contact_path( contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+</div>

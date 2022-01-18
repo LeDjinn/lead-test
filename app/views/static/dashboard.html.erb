@@ -3,8 +3,49 @@
 <% #end %> 
 
 <div>
+
+<div> Choisissez votre avatar sexist de seulement mec on que ça .....</div>
+<%if avatar? %>
+      <%= form_with url: create_path, method: :post  do |form|%>
+         <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar1" %>
+          <%= form.label :avatar, "Avatar geek" %>
+           <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar2" %>
+          <%= form.label :avatar, "Avatar pas geek" %>
+           <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar3" %>
+          <%= form.label :avatar, "Avatar pas geek du tout" %>
+          <%= form.submit%>
+      <% end %>
+<%else%>
+
+ <div class="text-3xl text-green-200" x-data="{ open: false }"> Changez d'avatar !
+ <button @click="open = true"> Afficher le formulaire </button>
+ <div x-show="open" >
+  <%= form_with url: create_path, method: :post  do |form|%>
+         <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar1" %>
+          <%= form.label :avatar, "Avatar geek" %>
+           <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar2" %>
+          <%= form.label :avatar, "Avatar pas geek" %>
+           <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
+          <%= form.radio_button :avatar, "avatar3" %>
+          <%= form.label :avatar, "Avatar pas geek du tout" %>
+          <%= form.submit%>
+      <% end %>
+  </div>
+      
+</div>
+<%end%>
+
+
+ 
 <h3 class="text-center text-green-500 text-2xl font-bold">Rafraichissez la page si le Dashboard n'apparait pas !</h3>
+
  <%= javascript_pack_tag 'hello_react' %>
+
 
         <!--Navbar-->
         
@@ -45,3 +86,7 @@
         
         <%end%>       
 </div>
+<%= javascript_pack_tag do%>
+<% var avatar = current_user.avatar %>
+<% end %>
+ <div id="testReact" data-avatar="<%= current_user.avatar %>"></div>

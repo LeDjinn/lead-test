@@ -1,0 +1,12 @@
+<div>Formulaire</div>
+
+
+<%= form_with(model: @contact)  do |form| %>
+    <%= form.label :place %>
+    <%= form.text_field :place %>
+    <%= form.label :titre %>
+    <%= form.text_field :title %>
+    <%= form.label :mots_clefs %>
+    <%= form.text_area :key_w %>
+    <%= form.submit %>
+ <%end%>
