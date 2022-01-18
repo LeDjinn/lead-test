@@ -78,3 +78,7 @@ gem 'faraday'
 gem 'rack-cors'
 gem 'prettier'
 gem 'rubocop', require: false
+
+gem 'meta-tags'
+
+gem 'friendly_id', '~> 5.4.0'

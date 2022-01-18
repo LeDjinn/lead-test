@@ -12,13 +12,14 @@ import Comment from "./Comment";
 import Communication from "./Communication";
 import PannelClient from "./PannelClient";
 
-function App() {
+function App(avatar) {
   //const obj = JSON.parse(tokkens.tokkens.body)
   //const likes = obj.fan_count
+  console.log(avatar);
   return (
     <>
       <div className="flex h-full bg-gray-800">
-        <AsideBar />
+        <AsideBar avatar={avatar} />
         <PannelClient />
       </div>
     </>
