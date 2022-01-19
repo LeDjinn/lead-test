@@ -1,6 +1,26 @@
-<div>Truc</div>
-
-
-<% @blogs.each do |blog| %>
-<%= blog.body %>
-<% end %>
+<section class="bg-coolGray-100 text-coolGray-800">
+	<div class="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+    <div class="text-center mb-20 mt-4">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Blog</h1>
+        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">Nos derniers articles</p>
+        <div class="flex mt-6 justify-center">
+        <div class="w-16 h-1 rounded-full primary inline-flex"></div>
+        </div>
+    </div>
+		<div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <% @blogs.each do |blog| %>
+			<a href="#" class="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-coolGray-50">
+				<img role="presentation" class="object-cover w-full rounded h-44 bg-coolGray-500" src=<%= @src %>>
+				<div class="p-6 space-y-2">
+					<h3 class="text-2xl font-semibold group-hover:underline group-focus:underline"><%= blog.title %></h3>
+					<span class="text-xs text-coolGray-600"><%= blog.body %></span>
+					<p><%= blog.content %></p>
+				</div>
+			</a>
+            <% end %>
+		</div>
+		<div class="flex justify-center">
+			<button class="px-6 py-3 text-sm rounded-md hover:underline bg-coolGray-50 text-coolGray-600">Load more posts...</button>
+		</div>
+	</div>
+</section>

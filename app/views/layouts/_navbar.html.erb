@@ -50,14 +50,7 @@
          </a>
        </li>
        <li>
-         <a
-           href="/dashboard"
-           aria-label="Tableau de board"
-           title="Tableau de board"
-           class="font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:primary-hover"
-         >
-         Tableau de board
-         </a>
+         <%= link_to 'Tableau de board', dashboard_path,data: { turbolinks: false }, class:"font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:primary-hover"%>
        </li>
        <li>
          <%= link_to 'Nous contacter', contacts_path , class:"font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:primary-hover"%>

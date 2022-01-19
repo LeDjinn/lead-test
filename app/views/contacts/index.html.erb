@@ -1,32 +1,45 @@
-<div>
-<h1>Page ou on a tout les indexs</h1>
-
- <h2> Tout les contact dans chaque ville </h2>
-
-  <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
+<div class="container flex flex-col mx-auto w-full items-center justify-center px-2 mt-10 mb-10">
+    <div class="px-4 py-5 sm:px-6 w-full border dark:bg-gray-800 bg-white shadow mb-2 rounded-md">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+            Nous intervenons partout en France
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-200 text">
+            Trouvez l'agence qui la plus proche
+        </p>
+    </div>
+    
+    <ul class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <% @contacts.each do |contact| %>
-      <tr>  
-        <td><%= contact.place %></td>
-       
-        >
-        <td><%= link_to 'Show', contact_path(contact) %></td>
-        <td><%= link_to 'Edit', edit_contact_path( contact ) %></td>
-        <td><%= link_to 'Destroy', contact_path( contact), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      
-    <% end %>
-  </tbody>
-</table>
-
+        <li class="border-gray-400 flex flex-row mb-2">
+            <div class="transition duration-500 shadow ease-in-out transform hover:-translate-y-1 hover:shadow-lg select-none  bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-4">
+                <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    
+                </div>
+                <div class="flex-1 pl-1 md:mr-16">
+                    <div class="font-medium dark:text-white">
+                        <%= contact.place %>
+                    </div>
+                   
+                </div>
+                <div class="text-gray-600 dark:text-gray-200 text-xs">
+                    Contacter notre agence 
+                </div>
+                <%= link_to contact_path(contact) do %>
+                <button class="w-24 text-right flex justify-end">
+                    <svg width="12" fill="currentColor" height="12" class="hover:text-gray-800 text-gray-500 cursor-pointer" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                        </path>
+                    </svg>
+                </button>
+                <% end %>
+            </div>
+        </li>   
+        <% end %> 
+    </ul>
+    
 </div>
+
