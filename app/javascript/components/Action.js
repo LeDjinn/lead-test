@@ -23,7 +23,7 @@ export default function Action() {
 
   return (
     <>
-      <li class="px-2 py-1 text-white transition-colors duration-150">
+      <li class="px-2 py-1 text-white transition-colors duration-150 ">
         <span class="inline-flex items-center  text-sm font-semibold text-white hover:texte-pink-500">
           <img
             src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/64/000000/external-edit-user-interface-wanicon-lineal-color-wanicon.png"

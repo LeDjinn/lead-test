@@ -4,87 +4,21 @@
 
 <div>
 
-<div> Choisissez votre avatar sexist de seulement mec on que ça .....</div>
-<%if avatar? %>
-      <%= form_with url: create_path, method: :post  do |form|%>
-         <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar1" %>
-          <%= form.label :avatar, "Avatar geek" %>
-           <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar2" %>
-          <%= form.label :avatar, "Avatar pas geek" %>
-           <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar3" %>
-          <%= form.label :avatar, "Avatar pas geek du tout" %>
-          <%= form.submit%>
-      <% end %>
-<%else%>
-
- <div class="text-3xl text-green-200" x-data="{ open: false }"> Changez d'avatar !
- <button @click="open = true"> Afficher le formulaire </button>
- <div x-show="open" >
-  <%= form_with url: create_path, method: :post  do |form|%>
-         <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar1" %>
-          <%= form.label :avatar, "Avatar geek" %>
-           <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar2" %>
-          <%= form.label :avatar, "Avatar pas geek" %>
-           <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
-          <%= form.radio_button :avatar, "avatar3" %>
-          <%= form.label :avatar, "Avatar pas geek du tout" %>
-          <%= form.submit%>
-      <% end %>
-  </div>
-      
-</div>
-<%end%>
 
 
  
-<h3 class="text-center text-green-500 text-2xl font-bold">Rafraichissez la page si le Dashboard n'apparait pas !</h3>
+
 
  <%= javascript_pack_tag 'hello_react' %>
 
 
         <!--Navbar-->
-        
-      
+
+       <%= render "static/first-dashboard" %>
 
 
-       <h1>Contentwebs</h1>
-         <%@contentwebs.each do |contentweb|%>
-         <ul>
-         <li><%= contentweb.header%></li>
-
-         
-         </ul>
-         <%end%>
-        <table>
-          <thead>
-            <tr>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-        
-          <tbody>
-            <% @contentwebs.each do |contentweb| %>
-                <ul>
-                <li class="text-2xl text-green-500 font-bold"><%= link_to 'Voir la prevue', contentweb %></li><br>
-                <li class="text-2xl text-green-500 font-bold"><%= link_to 'Modifier', edit_contentweb_path(contentweb) %></li><br>
-                <li class="text-2xl text-red-500 font-bold"><%= link_to 'Effacez le contenuu', contentweb, method: :delete, data: { confirm: 'Are you sure?' } %></li><br>
-               <li class=""><%= link_to 'Créez Votre de nouvelles pages WEB', contentweb_pages_path(contentweb), class: 'text-5xl font-bold text-green-900' %></li><br>
-              </ul>
-            
-            <% end %>
-          </tbody>
-        </table>
-        
-        <br>
-        <%if current_user.contentweb.nil?%>
-            <%= link_to 'Créez Votre première page WEB', new_contentweb_path, class: 'text-5xl font-bold text-green-900' %>
-        
-        <%end%>       
+       
+             
 </div>
 <%= javascript_pack_tag do%>
 <% var avatar = current_user.avatar %>

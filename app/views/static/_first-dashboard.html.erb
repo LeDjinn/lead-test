@@ -1,0 +1,115 @@
+<div class="h-full  primary border-b-2 border-gray-40">
+        <div class="grid grid-cols-12 gap-0">
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12 xxl:col-span-12 px-6 py-6 mt-4">
+                <!-- Start profile Card -->
+                <div class="bg-white rounded-xl p-4 shadow-xl">
+                    <div class="flex flex-col justify-center items-center">
+                        <div class="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
+                            <img 
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxhAxJ4D7MOeTTj6kR9PBeZonW5HM7giKjTbEmR-HMBwf3G1VqGnlwpO1kWrdyIZu8_U&usqp=CAU" 
+                            class="rounded-full w-auto"
+                            />
+                        </div> 
+                        <div class="relative  p-4 rounded-lg shadow-xl w-full bg-cover bg-center h-auto mt-4"
+                            style="background-image: url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');"
+                        >
+                        <div class="absolute inset-0 bg-gray-800 bg-opacity-50"></div>
+                            <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
+                                <%if avatar? %>
+                                <%= form_with url: create_path, method: :post  do |form|%>
+                                    <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
+                                    <%= form.radio_button :avatar, "avatar1" %>
+                                    <%= form.label :avatar, "Avatar geek" %>
+                                    <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
+                                    <%= form.radio_button :avatar, "avatar2" %>
+                                    <%= form.label :avatar, "Avatar pas geek" %>
+                                    <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
+                                    <%= form.radio_button :avatar, "avatar3" %>
+                                    <%= form.label :avatar, "Avatar pas geek du tout" %>
+                                    <%= form.submit :Enregistrez, class:" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded"%>
+                                <% end %>
+                            <%else%>
+
+                                    <div class="text-2xl text-gray-50" x-data="{ open: false }"> 
+                                    <button @click="open = true" class="mb-2 hover:text-pink-600"> Changez votre avatar </button>
+                                    <div x-show="open" class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6" >
+                                        <%= form_with url: create_path, method: :post  do |form|%>
+                                            <%= image_tag "avatar1" ,style: 'height:5vw;width:5vw'%>
+                                                <%= form.radio_button :avatar, "avatar1" %>
+                                                <%= form.label :avatar, "Avatar geek" %>
+                                                <%= image_tag "avatar2" ,style: 'height:5vw;width:5vw'%>
+                                                <%= form.radio_button :avatar, "avatar2" %>
+                                                <%= form.label :avatar, "Avatar pas geek" %>
+                                                <%= image_tag "avatar3" ,style: 'height:5vw;width:5vw'%>
+                                                <%= form.radio_button :avatar, "avatar3" %>
+                                                <%= form.label :avatar, "Avatar pas geek du tout" %>
+                                                <%= form.submit :Enregistrez, class:" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded"%>
+                                            <% end %>
+                                        </div>    
+                                    </div>
+                            <%end%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6">
+                
+                <div class="bg-white rounded-xl p-4 shadow-xl mt-4">
+                    <div class="flex flex-col justify-center items-center">
+                       <img src="https://cdn3d.iconscout.com/3d/premium/thumb/upload-social-media-post-4291893-3569926.png" class="w-auto h-40 rounded-lg"/>
+                        <p class="font-semibold text-xl mt-1">Construction du site</p>
+                        <p class="font-semibold text-sm text-gray-400 text-center">Vous permets de voir à quoi pourrait  <br> ressembler votre site</p>
+                        <div class="flex flex-row space-x-4">
+                            <button class=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                            <% @contentwebs.each do |contentweb| %>
+                                    <%= link_to 'Voir un aperçu', contentweb %>
+                                <% end %>
+                            </button>
+                            <button class=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                                <% @contentwebs.each do |contentweb| %>
+                                    <%= link_to 'Modifier', edit_contentweb_path(contentweb) %>
+                                <% end %>
+                            </button> 
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6 mb-4">
+                
+                <div class="bg-white rounded-xl p-4 shadow-xl mt-4">
+                    <div class="flex flex-col justify-center items-center">
+                       <img src="https://cdn3d.iconscout.com/3d/premium/thumb/upload-social-media-post-4291893-3569926.png" class="w-auto h-40 rounded-lg"/>
+                        <p class="font-semibold text-xl mt-1">Construction du site</p>
+                        <p class="font-semibold text-sm text-gray-400 text-center"> Effacez le/les contenu(s) <br> qui ne sont plus nécéssaires</p>
+                        <button class=" mt-4 bg-red-600 hover:bg-red-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                            <% @contentwebs.each do |contentweb| %>
+                                <%= link_to 'Effacez le contenu', contentweb, method: :delete, data: { confirm: 'Êtes-vous sûr?' } %>
+                            <% end %>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-6 py-6">
+               
+                <div class="bg-white rounded-xl p-4 shadow-xl mt-4">
+                    <div class="flex flex-col justify-center items-center">
+                       <img src="https://cdn3d.iconscout.com/3d/premium/thumb/upload-social-media-post-4291893-3569926.png" class="w-auto h-40 rounded-lg"/>
+                        <p class="font-semibold text-xl mt-1">Construction du site</p>
+                        <p class="font-semibold text-sm text-gray-400 text-center">Ajoutez les pages que vous <br> souhaitez mettre sur votre site</p>
+                        <button class=" mt-4 bg-green-600 hover:bg-green-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                            <% @contentwebs.each do |contentweb| %>
+                                <%= link_to 'Créez Votre de nouvelles pages WEB', contentweb_pages_path(contentweb) %>
+                            <% end %>
+                            <%if current_user.contentweb.nil?%>
+                                <%= link_to 'Créez Votre première page WEB', new_contentweb_path, class: 'text-5xl font-bold text-green-900' %>
+                            <%end%>  
+                        </button>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

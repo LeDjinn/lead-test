@@ -18,7 +18,7 @@ function App(avatar) {
   console.log(avatar);
   return (
     <>
-      <div className="flex h-full bg-gray-800">
+      <div className="flex h-full bg-black">
         <AsideBar avatar={avatar} />
         <PannelClient />
       </div>
