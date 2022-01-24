@@ -1,9 +1,9 @@
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-full md:px-24 lg:px-8 lg:py-20 bg-black" x-data="{
-            faqs: [
+             faqs: [
                 {
                     question: 'Est-ce que les prix indiqués sont uniques?',
                     answer: 'Les tarifs mensuels sont variables en fonction du pack choisi et des options désirées. Les packs sont adaptés aux besoins globales de nos clients afin de s’adapter à tous les types de portefeuilles. Contactez-nous afin d’en savoir plus sur les différentes options et le forfait le plus adapté à vos besoins.',
-                    isOpen: true,
+                    isOpen: false,
                 },
                 {
                     question: `Est-ce qu'il y a des frais cachés?`,
@@ -55,24 +55,24 @@
               <span class="relative text-gray-50">FAQ</span>
             </span>
           </h2>
-          <p class="text-base text-gray-50 md:text-lg text-center">
+          <p class="text-base text-gray-50 md:text-lg">
             Vous avez des questions concernant nos abonnements ? Vous trouverez
             peut-être la réponse dans notre section FAQ, si ce n'est pas le cas
-            n'hésitez pas à nous <a href="/contacts" class='font-bold text-pink-600 hover:text-gray-50'> contactez </a>
+            n'hésitez pas à nous <a href="/contacts"> contactez </a>
           </p>
     </div>
     <div class="leading-loose text-lg mt-6 max-w-xl sm:mx-auto lg:max-w-2xl ">
       <template x-for="faq in faqs" :key="faq.question">
-        <div class="item bg-white shadow-md rounded-md  mb-4 p-2">
+        <div class="item bg-white shadow-md rounded-md  mb-2" >
           <button class="w-full font-bold p-3 flex justify-between items-center "
             @click="faqs = faqs.map(f => ({ ...f, isOpen: f.question !== faq.question ? false : !f.isOpen}))"><!-- Specs has it that only one component can be open at a time and also you should be able to toggle the open state of the active component too -->
             <div x-text="faq.question"></div>
-            
-            <svg
-                viewBox="0 0 24 24"
-                class="w-3 text-gray-900 transition-transform duration-200 rounded"
-                :class="faq.isOpen ? 'transform rotate-180' : ''"
-            >
+           
+                <svg
+                    viewBox="0 0 24 24"
+                    class="w-3 text-gray-900 transition-transform duration-200"
+                    :class="faq.isOpen ? 'transform rotate-180' : ''"
+                >
                 <polyline
                 fill="none"
                 stroke="currentColor"
@@ -83,16 +83,21 @@
                 strokeLinejoin="round"
                 />
             </svg>
-          </button>
-         
+            </button>
+            <div x-data="{ open: false }">    
+            
+            
+        </div>
 
           
-          <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-show="faq.isOpen">
-            <div class="text-gray-700 pl-3 md:pl-4 lg:pl-6 py-2 space-y-3" x-text="faq.answer" >
+          <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-bind:style="faq.isOpen === true ? `max-height:  ${ $el.scrollHeight }px` : ``" x-show="faq.isOpen">
+          <div class="text-gray-700  p-2 md:p-4 lg:p-2 py-2 space-y-3" x-text="faq.answer" >
           </div>
         </div>
         </div>
       </template>
 
     </div>
-</div>
+  </div>
+
+ 
