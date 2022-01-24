@@ -3,24 +3,10 @@
 <% #end %> 
 
 <div>
-
-
-
- 
-
-
- <%= javascript_pack_tag 'hello_react' %>
-
-
-        <!--Navbar-->
-
-       <%= render "static/first-dashboard" %>
-
-
-       
-             
+  <%= javascript_pack_tag 'hello_react' %>
+  <%= render "static/first-dashboard" %>
+  <%= javascript_pack_tag do%>
+    <% var avatar = current_user.avatar %>
+  <% end %>
+  <div id="testReact" data-avatar="<%= current_user.avatar %>"></div>
 </div>
-<%= javascript_pack_tag do%>
-<% var avatar = current_user.avatar %>
-<% end %>
- <div id="testReact" data-avatar="<%= current_user.avatar %>"></div>

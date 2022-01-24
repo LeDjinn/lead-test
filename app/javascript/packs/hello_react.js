@@ -34,7 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   ReactDOM.render(
   
     <ApolloProvider client={client}>
-      <App avatar={avatar} />,
+      <App avatar={avatar} />
     </ApolloProvider>,
      element
     //document.body.appendChild(document.createElement("div"))
