@@ -1,0 +1,42 @@
+<div class="h-full  bg-gray-200 border-b-2 border-gray-40">
+        <div class="grid grid-cols-12 gap-0">
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12 xxl:col-span-12 px-6 py-6">
+                <!-- Start profile Card -->
+                 <div class="bg-white rounded-xl p-4 shadow-xl mt-4">
+                    <div class="flex flex-col justify-center items-center">
+                       <img src="https://cdn3d.iconscout.com/3d/premium/thumb/upload-social-media-post-4291893-3569926.png" class="w-auto h-40 rounded-lg"/>
+                        <p class="font-semibold text-xl mt-1">Construction du site</p>
+                        <p class="font-semibold text-sm text-gray-400 text-center">Vous permets de créer, éditer, ajouter ou supprimer  <br> du contenu pour votre sitre vitrine</p>
+                        
+                        <div class="flex flex-row space-x-4">
+                            <button class=" mt-4 bg-gray-600 hover:bg-gray-700 shadow-xl text-white font-bold py-2 px-4 rounded flex flex-inline">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" />
+                                </svg>
+                                <%= link_to 'Back', contentwebs_path %>   
+                            </button>
+                           
+                            <button class=" mt-4 bg-pink-600 hover:bg-pink-700 shadow-xl text-white font-bold py-2 px-4 rounded" title="cliquer">
+                                    <%= link_to 'Voir un aperçu', @contentweb %> 
+                            </button>
+                            <button class=" mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                                    <%= link_to 'Modifier', edit_contentweb_path(@contentweb) %>
+                            </button> 
+                            <button class=" mt-4 bg-red-600 hover:bg-red-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                                <%= link_to 'Effacez le contenu', @contentweb, method: :delete, data: { confirm: 'Êtes-vous sûr?' } %>
+                            </button>
+                            <button class=" mt-4 bg-green-600 hover:bg-green-700 shadow-xl text-white font-bold py-2 px-4 rounded">
+                                <%= link_to 'Créez Votre de nouvelles pages WEB', contentweb_pages_path(@contentweb) %>
+                                <%if current_user.contentweb.nil?%>
+                                    <%= link_to 'Créez Votre première page WEB', new_contentweb_path, class: 'text-5xl font-bold text-green-900' %>
+                                <%end%>  
+                            </button>
+                        </div>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
