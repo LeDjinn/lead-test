@@ -7,11 +7,8 @@ class AdminController < ApplicationController
     @answer = Answer.new
     @words = Word.all
     if params[:word_id]
-      @word= Word.find(params[:word_id])
+      @word = Word.find(params[:word_id])
       @user = User.find(params[:user_id])
     end
-  
   end
-
-
 end

@@ -8,16 +8,11 @@ class StaticController < ApplicationController
   def contact; end
 
   def admin_dashboard
-
-
     if params[:secret_number] == 'secret'
-     sign(true)
-     else
+      sign(true)
+    else
       sign(false)
     end
-
-
-    
   end
 
   def product; end
@@ -29,17 +24,15 @@ class StaticController < ApplicationController
     @comments = Comment.where(user: client)
   end
 
-
   def blog
     @blogs = Word.where(user_id: 2)
-    @src="https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit"
-  end 
-
-  def create
-    @user=current_user
-    @user.update(avatar: params[:avatar])
+    @src = 'https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit'
   end
 
+  def create
+    @user = current_user
+    @user.update(avatar: params[:avatar])
+  end
 
   private
 

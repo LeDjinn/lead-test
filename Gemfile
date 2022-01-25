@@ -39,8 +39,8 @@ group :development do
 
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
 end
 
 group :test do
@@ -52,13 +52,17 @@ group :test do
   gem 'webdrivers'
 end
 
+group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'devise'
 
-gem 'graphql'
 gem 'graphiql-rails', group: :development
+gem 'graphql'
 
 gem 'pay', '~> 3.0'
 
@@ -75,9 +79,8 @@ gem 'paddle_pay', '~> 0.1'
 gem 'receipts', '~> 1.1'
 
 gem 'faraday'
-gem 'rack-cors'
 gem 'prettier'
-gem 'rubocop', require: false
+gem 'rack-cors'
 
 gem 'meta-tags'
 

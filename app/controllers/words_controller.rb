@@ -14,13 +14,10 @@ class WordsController < ApplicationController
       @user = User.find(params[:user_id])
       @words = Word.where(user_id: current_user)
     end
-    
   end
 
   # GET /words/1 or /words/1.json
-  def show
-   
-  end
+  def show; end
 
   # GET /words/new
   def new
@@ -54,7 +51,7 @@ class WordsController < ApplicationController
     respond_to do |format|
       if @word.update(word_params)
         format.html do
-          redirect_to user_word_path(@user,@word), notice: 'Word was successfully updated.'
+          redirect_to user_word_path(@user, @word), notice: 'Word was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @word }
       else
@@ -82,16 +79,13 @@ class WordsController < ApplicationController
   def set_word
     @word = Word.find(params[:id])
   end
+
   def get_current_user
     @user = current_user
   end
 
   def user_admin?
-    if current_user.email=== 'bonjour@gmail.com'
-      return true
-    else
-      return false
-    end
+    current_user.email === 'bonjour@gmail.com'
   end
 
   # Only allow a list of trusted parameters through.

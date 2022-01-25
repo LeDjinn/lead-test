@@ -20,11 +20,11 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment =
-    Comment.new(
-      user_id: params[:user_id].to_i,
-      subject: params[:subject],
-      body: params[:body]
-    )
+      Comment.new(
+        user_id: params[:user_id].to_i,
+        subject: params[:subject],
+        body: params[:body]
+      )
 
     respond_to do |format|
       if @comment.save

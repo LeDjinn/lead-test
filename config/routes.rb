@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :tokkens
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
-  end
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
   post '/graphql', to: 'graphql#execute'
 
   resources :answers, except: %i[update edit]
@@ -11,9 +9,9 @@ Rails.application.routes.draw do
   resources :contentwebs do
     resources :pages
   end
-  devise_for :users, :path => 'accounts'
+  devise_for :users, path: 'accounts'
   resources :users do
-       resources :words
+    resources :words
   end
 
   resources :tokkens
@@ -30,7 +28,7 @@ Rails.application.routes.draw do
   scope controller: :static do
     get :blog
     get :help
-    
+
     get :product
     get :dashboard
     post :create
@@ -40,7 +38,6 @@ Rails.application.routes.draw do
     get :index
   end
   resources :notifications
-  
+
   resources :contacts
-  
 end
