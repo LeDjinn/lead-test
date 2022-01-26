@@ -33,6 +33,11 @@ Rails.application.routes.draw do
     get :dashboard
     post :create
     get :admin_dashboard
+    get :mentions_legales
+    get :contrat_basic
+    get :contrat_business
+    get :contrat_pro
+    get :faqs
   end
   scope controller: :admin do
     get :index

@@ -34,6 +34,27 @@ class StaticController < ApplicationController
     @user.update(avatar: params[:avatar])
   end
 
+  def faqs
+  
+  end
+
+  def mentions_legales
+  
+  end
+
+  def contrat_basic
+  
+  end
+
+  def contrat_pro
+  
+  end
+
+  def contrat_business
+  
+  end
+
+
   private
 
   def set_paid_user
