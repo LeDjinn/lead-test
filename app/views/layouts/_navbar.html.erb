@@ -49,20 +49,31 @@
            Nos produits
          </a>
        </li>
+       
        <li>
          <%= link_to 'Tableau de board', dashboard_path,data: { turbolinks: false }, class:"font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:primary-hover"%>
        </li>
        <li>
+         <a
+           href="/blog"
+           aria-label="Accueil"
+           title="Accueil"
+           class="font-medium tracking-wide text-base text-gray-50 transition-colors duration-200 hover:primary-hover"
+         >
+           Blog
+         </a>
+       </li>
+       <li>
          <%= link_to 'Nous contacter', contacts_path , class:"font-medium tracking-wide text-base  text-gray-50 transition-colors duration-200 hover:primary-hover"%>
        </li>
+       
      </ul>
      <ul class="flex items-center hidden space-x-8 lg:flex">
-       <li>
-         
+       <li> 
          <% if current_user %>
-            <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none "  %>
+            <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none "  %>
         <%else%>
-            <%= link_to "S'abonner / Se connecter", new_user_session_path , class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none" %>
+            <%= link_to "S'abonner/Se connecter", new_user_session_path , class: "inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none" %>
         <%end%>
        </li>
      </ul>
@@ -158,16 +169,22 @@
                  </li>
                  <li>
                    <%= link_to 'Tableau de Board', dashboard_path,  class: 'font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600' %>
-                    
-                     
-                   
-                 
                  </li>
                  <li>
+                    <a
+                      href="/blog"
+                      aria-label="Accueil"
+                      title="Accueil"
+                      class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-pink-600"
+                    >
+                      Blog
+                    </a>
+                  </li>
+                 <li>
                    <% if current_user %>
-                    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"  %>
+                    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"  %>
                    <%else%>
-                   <%= link_to "S'abonner", new_user_session_path , class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" %>
+                   <%= link_to "S'abonner", new_user_session_path , class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-pink-600 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" %>
                   <%end%>
                  </li>
                </ul>
