@@ -1,18 +1,92 @@
 <section class="text-gray-600 body-font mt-4 mb-4">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 py-24 mx-auto" x-data="{
+             faqs: [
+                {
+                    question: 'Est-ce que les prix indiqués sont uniques?',
+                    answer: 'Les tarifs mensuels sont variables en fonction du pack choisi et des options désirées. Les packs sont adaptés aux besoins globales de nos clients afin de s’adapter à tous les types de portefeuilles. Contactez-nous afin d’en savoir plus sur les différentes options et le forfait le plus adapté à vos besoins.',
+                    isOpen: false,
+                },
+                {
+                    question: `Est-ce qu'il y a des frais cachés?`,
+                    answer: `Non seulement le tarif de l'abonnement séléctionner et les options
+                    choisis si applicable.`,
+                    isOpen: false,  
+                },
+                {
+                    question: `Est-ce qu'il y a des frais à la fin de votre abonnement?`,
+                    answer: `À la fin de votre abonnement vous aurez à votre charge les frais de
+                    renouvellement de nom de domaine et les frais d’hébergement annuel
+                    de votre site. Si vous souhaitez utilisez la partie blog de votre
+                    site, il faut savoir que vous aurez également un forfait pour
+                    l'accès à notre plateforme(si vous souhaitez bien-sûr continuer
+                    d'entretenir votre blog). Si le forfait ne vous convient pas nous
+                    pouvons également vous créez votre propre API : Nous consultez pour en savoir plus.`,
+                    isOpen: false,  
+                },
+                {
+                    question: `À la fin de m'abonnement est ce que je conserve mon site?`,
+                    answer: `Oui les pages statics du site sont votre cependant l'accès à la
+                    partie dynamique bloging reste utilisable via des accès à notre
+                    plateforme ou sur demande de création d'une API propre à votre
+                    entreprise. Contactez nous pour en savoir plus.`,
+                    isOpen: false,  
+                },
+                {
+                    question: `Est-ce que l'hébergement web est inclus dans les packs?`,
+                    answer: `Oui, les abonnements inclus l’hébergement web. Veuillez noté que
+                    pour les packs Basics et Premiums sont sur des hébergements
+                    mutualisés. Pour le pack Professionnel votre site web sera héberger
+                    sur un serveurs dédié afin d’avoir les performances optimales en
+                    tout temps.`,
+                    isOpen: false,  
+                },
+                {
+                    question: `Quels sont les modalités et les moyens de paiement?`,
+                    answer: `Vous recevrez une facture récurente à chaque mois si vous choisissez
+                    la tarification mensuel et une seule facture annuel si vous
+                    choisissez la tarification annuelle. Cette facture est payable par
+                    par virement bancaire.`,
+                    isOpen: false,  
+                },
+            ]
+        }">
     <div class="text-center mb-20">
       <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Raw Denim Heirloom Man Braid</h1>
       <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
     </div>
     <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
       <div class="p-2 sm:w-1/2 w-full">
-        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-            <path d="M22 4L12 14.01l-3-3"></path>
-          </svg>
-          <span class="title-font font-medium">Authentic Cliche Forage</span>
+        <template x-for="faq in faqs" :key="faq.question">
+        <div class="item bg-white shadow-md rounded-md  mb-4 p-2">
+          <button class="w-full font-bold p-3 flex justify-between items-center "
+            @click="faqs = faqs.map(f => ({ ...f, isOpen: f.question !== faq.question ? false : !f.isOpen}))"><!-- Specs has it that only one component can be open at a time and also you should be able to toggle the open state of the active component too -->
+            <div x-text="faq.question"></div>
+            
+            <svg
+                viewBox="0 0 24 24"
+                class="w-3 text-gray-900 transition-transform duration-200 rounded"
+                :class="faq.isOpen ? 'transform rotate-180' : ''"
+            >
+                <polyline
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeMiterlimit="10"
+                points="2,7 12,17 22,7"
+                strokeLinejoin="round"
+                />
+            </svg>
+          </button>
+         
+
+          
+          <div class="relative overflow-hidden transition-all max-h-0 duration-700" >
+            <div class="text-gray-700 pl-3 md:pl-4 lg:pl-6 py-2 space-y-3" x-text="faq.answer" x-show="faq.isOpen" >
+          </div>
         </div>
+        </div>
+      </template>
       </div>
       <div class="p-2 sm:w-1/2 w-full">
         <div class="bg-gray-100 rounded flex p-4 h-full items-center">
