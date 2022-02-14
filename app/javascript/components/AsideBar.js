@@ -17,10 +17,10 @@ export default function AsideBar( avatar) {
   return (
 
 
-  <aside className="z-20 flex-shrink-0 hidden w-76 pl-2 overflow-y-auto primary md:block">
+  <aside className="z-20 flex-shrink-0 hidden w-76 pl-2 overflow-y-auto bg-gray-800 md:block">
     <div className="text-white">
       <div >{}</div>
-      <div className="flex p-2 primary">
+      <div className="flex p-2  bg-gray-800">
         <div className="flex py-3 px-2 items-center">
           <p className="text-2xl text-center text-purple-500 font-semibold italic ">
             Dasboard
