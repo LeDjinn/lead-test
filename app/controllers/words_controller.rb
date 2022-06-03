@@ -1,23 +1,30 @@
 class WordsController < ApplicationController
   protect_from_forgery except: :index
+  before_action :authenticate_user!
   before_action :get_current_user
+  before_action :user_admin?
   before_action :set_word, only: %i[show edit update destroy]
 
   # GET /words or /words.json
   def index
-    @user = current_user
-    @words = Word.all
+    if user_admin?
+      @users = User.all
+      @words = Word.all
+    else
+      @user = User.find(params[:user_id])
+      @words = Word.where(user_id: current_user)
+    end
+    
   end
 
   # GET /words/1 or /words/1.json
   def show
-    test = Word.last
-    @post = test.content.body.to_html
-    render json: @post
+   
   end
 
   # GET /words/new
   def new
+    @user = User.find(params[:user_id])
     @word = Word.new
   end
 
@@ -31,7 +38,7 @@ class WordsController < ApplicationController
     respond_to do |format|
       if @word.save
         format.html do
-          redirect_to @word, notice: 'Word was successfully created.'
+          redirect_to user_words_path, notice: 'Le post est crée'
         end
         format.json { render :show, status: :created, location: @word }
       else
@@ -43,10 +50,11 @@ class WordsController < ApplicationController
 
   # PATCH/PUT /words/1 or /words/1.json
   def update
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @word.update(word_params)
         format.html do
-          redirect_to @word, notice: 'Word was successfully updated.'
+          redirect_to user_word_path(@user,@word), notice: 'Word was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @word }
       else
@@ -62,7 +70,7 @@ class WordsController < ApplicationController
     @word.destroy
     respond_to do |format|
       format.html do
-        redirect_to words_url, notice: 'Word was successfully destroyed.'
+        redirect_to user_words_url, notice: 'Word was successfully destroyed.'
       end
       format.json { head :no_content }
     end
@@ -76,6 +84,14 @@ class WordsController < ApplicationController
   end
   def get_current_user
     @user = current_user
+  end
+
+  def user_admin?
+    if current_user.email=== 'bonjour@gmail.com'
+      return true
+    else
+      return false
+    end
   end
 
   # Only allow a list of trusted parameters through.

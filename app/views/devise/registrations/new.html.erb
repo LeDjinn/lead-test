@@ -1,3 +1,12 @@
+<form action='/accounts/sign_up' method="get">
+<label>Secret number</label>
+<input type="text" name="secret_number">
+<button>Submit</button>
+
+</form>
+
+<% if sign(params[:secret_number])%>
+<div >
 <h3 class="text-lg bg-green-500 text-white h-12 text-center font-bold py-2">Votre paiement est bien réussi</h3>
 <p class="text-left text-lg w-1/2 mx-auto mt-16 font-medium text-gray-900  ">Pour accéder à votre Dashboard veuillez créer un compte.<br> Pour cela veuillez utilisez le meme email que pour le paiement.
 <br> Une fois votre compte crée rendez vous dans le menu Dashboard pour conitnuer la création de votre site</p>
@@ -38,5 +47,8 @@
           <div class=" mt-12"><%= image_tag "Finance app_Isometric.svg", height: 300 %></div>
 
 </div>
-
+</div>
+<%else%>
+<h2>Vous n'avez pas le bon secret</h2>
+<%end%>
  

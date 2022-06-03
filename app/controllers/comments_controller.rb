@@ -19,12 +19,17 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment =
+    Comment.new(
+      user_id: params[:user_id].to_i,
+      subject: params[:subject],
+      body: params[:body]
+    )
 
     respond_to do |format|
       if @comment.save
         format.html do
-          redirect_to @comment, notice: 'Comment was successfully created.'
+          redirect_to root_path, notice: 'Votre message est bien envoyé.'
         end
         format.json { render :show, status: :created, location: @comment }
       else
@@ -74,5 +79,9 @@ class CommentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def comment_params
     params.fetch(:comment, {})
+  end
+
+  def comment_params_new
+    params[:user_id, :body, :subject]
   end
 end

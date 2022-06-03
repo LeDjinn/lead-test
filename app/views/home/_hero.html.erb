@@ -85,15 +85,14 @@
                 <h3 class="mt-6 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                   Des questions ? 
                 </h3>
-                <form >
+              
+                <%=form_with( url: comments_path, method: :post)  do |form| %>
                 <div class="mt-12 mb-12 xl:w-96">
-                <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700"
-                  >Message</label
-                >
-                <textarea
-                  class="
+                  <%=form.label :Message, class: 'form-label inline-block mb-2 text-gray-700'%>
+             
+                <%= form.text_area :body, class:"
                     form-control
-                    block
+                    block 
                     w-full
                     px-3
                     py-1.5
@@ -107,26 +106,29 @@
                     ease-in-out
                     m-0
                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                  "
-                  id="exampleFormControlTextarea1"
-                  rows="5"
-                  placeholder="Votre message"
-                ></textarea>
-              </div>
+                  ",
+                  id: "exampleFormControlTextarea1",
+                  rows: 5,
+                  placeholder: 'Votre message'%>
+                  
+               </div>
+               <%= form.hidden_field :user_id, value: current_user.id%>
+                 <div class="mt-8 mb-2 sm:mb-4">
+                        <%= form.submit "Envoyez", class: "inline-flex cursor-pointer items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none" %>
+                          
+                       
+                         
+                       
+                  </div>
+
+                <%end%>
                   
                  
-                  <div class="mt-8 mb-2 sm:mb-4">
-                    <button
-                      type="submit"
-                      class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-600 hover:bg-pink-700 focus:shadow-outline focus:outline-none"
-                    >
-                      Envoyez
-                    </button>
-                  </div>
+   
                   <p class="text-xs text-gray-600 sm:text-sm">
                     Nous respectons votre vie privée. Mentions légales
                   </p>
-                </form>
+               
               </div>
             </div>
             <%else%>
